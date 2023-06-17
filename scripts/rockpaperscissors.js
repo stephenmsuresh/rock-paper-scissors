@@ -6,6 +6,11 @@ function getComputerChoice() {
     return (choices[(Math.floor((Math.random() * 3)))]);
 };
 
+//function that takes a string and makes every letter lowercase except the first letter
+function capitalize(word) {
+    //replace only replaces the first match
+    return ((word.toLowerCase()).replace(word.charAt(0), word.charAt(0).toUpperCase()));
+};
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
@@ -23,8 +28,12 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
-function capitalize(word) {
-    //replace only replaces the first match
-    return ((word.toLowerCase()).replace(word.charAt(0), word.charAt(0).toUpperCase()));
-};
+function game(){
+    //number of rounds of rock paper scissors to play
+    let noOfGames = 5;
+    //loop that plays a certain number of rounds
+    for(let i = 1; i <= noOfGames; i++){
+        let playerSelection = prompt("Let's play a round of rock paper scissors! Enter your choice: ");
+        playRound(playerSelection, getComputerChoice());
+    }
+}

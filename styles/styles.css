@@ -1,0 +1,12 @@
+#choices {
+    display: flex;
+}
+
+img {
+    width: 200px;
+    height: auto;
+}
+
+footer {
+    display: flex;
+}

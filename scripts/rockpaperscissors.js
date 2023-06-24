@@ -1,5 +1,9 @@
+const pScore = document.querySelector("#player-score").querySelector('span');
+const cScore = document.querySelector("#computer-score").querySelector('span');
 let playerScore = 0;
 let computerScore = 0;
+pScore.innerText = playerScore;
+cScore.innerText = computerScore;
 
 //.children property returns HTML collection, not an array
 const playerChoice = Array.from(document.getElementById('choices').children);
@@ -32,31 +36,35 @@ function playRound() {
         if ((playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "paper") ||
             (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock") ||
             (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "scissors")) {
-            updateScore("lose")
+            updateScore("l")
         }
         else {
-            updateScore("win");
+            updateScore("w");
         }
     }
 }
 
-function updateScore(result){
-    if(result = "win"){
+function updateScore(result) {
+    if (result === "w") {
         playerScore++;
-        if(playerScore >= 5){
+        if (playerScore >= 5) {
+            pScore.innerText = playerScore;
             alert("You Win! Congratulations!");
             playerScore = 0;
             computerScore = 0;
         }
     }
-    if(result = "lose"){
+    else if (result === "l") {
         computerScore++;
-        if(computerScore >= 5){
+        if (computerScore >= 5) {
+            cScore.innerText = computerScore;
             alert("You Lose! Better Luck Next Time!");
             playerScore = 0;
             computerScore = 0;
         }
     }
+    pScore.innerText = playerScore;
+    cScore.innerText = computerScore;
 }
 
 // game();

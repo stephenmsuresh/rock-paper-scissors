@@ -22,32 +22,41 @@ function capitalize(word) {
     return ((word.toLowerCase()).replace(word.charAt(0), word.charAt(0).toUpperCase()));
 };
 
-function playRound(e) {
+function playRound() {
     let playerSelection = this.id;
     let computerSelection = getComputerChoice();
     if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-        // return ("It's a tie!");
-        console.log("tie");
-        updateScore("tie");
+        return;
     }
     else {
         if ((playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "paper") ||
             (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock") ||
             (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "scissors")) {
-            // return (`You lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}!`);
-            console.log("lose");
             updateScore("lose")
         }
         else {
-            // return (`You win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}!`);
-            console.log("win");
             updateScore("win");
         }
     }
 }
 
 function updateScore(result){
-
+    if(result = "win"){
+        playerScore++;
+        if(playerScore >= 5){
+            alert("You Win! Congratulations!");
+            playerScore = 0;
+            computerScore = 0;
+        }
+    }
+    if(result = "lose"){
+        computerScore++;
+        if(computerScore >= 5){
+            alert("You Lose! Better Luck Next Time!");
+            playerScore = 0;
+            computerScore = 0;
+        }
+    }
 }
 
 // game();
